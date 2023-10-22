@@ -81,7 +81,7 @@ fn neighbours(pixels: &[u32], index: usize) -> usize {
 }
 
 fn main() {
-    let mut new_pixels = vec![COLOUR_DEAD; (GRID_WIDTH * GRID_HEIGHT) as usize];
+    let mut new_pixels = vec![COLOUR_DEAD; GRID_WIDTH * GRID_HEIGHT];
     let mut init = true;
 
     gfx_demo::gfx_demo(

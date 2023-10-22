@@ -86,8 +86,8 @@ fn main() {
 
     gfx_demo::gfx_demo(
         TITLE,
-        WINDOW_WIDTH as u32, WINDOW_HEIGHT as u32,
-        GRID_WIDTH as u32, GRID_HEIGHT as u32,
+        WINDOW_WIDTH, WINDOW_HEIGHT,
+        GRID_WIDTH, GRID_HEIGHT,
         50,
         |pixels| {
             if init {

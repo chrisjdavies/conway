@@ -41,8 +41,8 @@ dependencies = [
 
 [[package]]
 name = "gfx_demo"
-version = "0.2.0"
-source = "git+https://github.com/chrisjdavies/gfx_demo.git?tag=v0.2.0#5e74cdec870f7fb942cb78a19b2a06e5e645d735"
+version = "0.3.0"
+source = "git+https://github.com/chrisjdavies/gfx_demo.git?tag=v0.3.0#2e102b9b5bebcfebf90cd36da4f4b0b27b23e5bd"
 dependencies = [
  "sdl2",
 ]

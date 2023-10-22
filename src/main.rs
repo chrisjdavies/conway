@@ -3,6 +3,7 @@ use rand::Rng;
 
 const GRID_WIDTH: usize = 100;
 const GRID_HEIGHT: usize = 100;
+const GRID_SIZE: usize = GRID_WIDTH * GRID_HEIGHT;
 const COLOUR_ALIVE: u32 = 0xff00ff00;
 const COLOUR_DEAD: u32 = 0xff000000;
 const INV_DENSITY: u32 = 5;
@@ -21,22 +22,24 @@ fn neighbours(pixels: &[u32], index: usize) -> usize {
     let iindex = index as isize;
     let mut test_idx: isize;
 
-    // NW:
-    test_idx = iindex - iwidth - 1;
-    if test_idx >= 0 {
-        count += count_index(pixels, test_idx);
-    }
+    if index >= GRID_WIDTH {
+        // NW:
+        test_idx = iindex - iwidth - 1;
+        if test_idx >= 0 {
+            count += count_index(pixels, test_idx);
+        }
 
-    // N:
-    test_idx = iindex - iwidth;
-    if test_idx >= 0 {
-        count += count_index(pixels, test_idx);
-    }
+        // N:
+        test_idx = iindex - iwidth;
+        if test_idx >= 0 {
+            count += count_index(pixels, test_idx);
+        }
 
-    // NE:
-    test_idx = iindex - iwidth + 1;
-    if test_idx >= 0 && (test_idx % iwidth) != 0 {
-        count += count_index(pixels, test_idx);
+        // NE:
+        test_idx = iindex - iwidth + 1;
+        if test_idx >= 0 && (test_idx % iwidth) != 0 {
+            count += count_index(pixels, test_idx);
+        }
     }
 
     // W:
@@ -51,22 +54,24 @@ fn neighbours(pixels: &[u32], index: usize) -> usize {
         count += count_index(pixels, test_idx);
     }
 
-    // SW:
-    test_idx = iindex + iwidth - 1;
-    if test_idx < imax && (iindex % iwidth) != 0 {
-        count += count_index(pixels, test_idx);
-    }
+    if index < GRID_SIZE - GRID_WIDTH {
+        // SW:
+        test_idx = iindex + iwidth - 1;
+        if test_idx < imax && (iindex % iwidth) != 0 {
+            count += count_index(pixels, test_idx);
+        }
 
-    // S:
-    test_idx = iindex + iwidth;
-    if test_idx < imax {
-        count += count_index(pixels, test_idx);
-    }
+        // S:
+        test_idx = iindex + iwidth;
+        if test_idx < imax {
+            count += count_index(pixels, test_idx);
+        }
 
-    // SE:
-    test_idx = iindex + iwidth + 1;
-    if test_idx < imax && (test_idx % iwidth) != 0 {
-        count += count_index(pixels, test_idx);
+        // SE:
+        test_idx = iindex + iwidth + 1;
+        if test_idx < imax && (test_idx % iwidth) != 0 {
+            count += count_index(pixels, test_idx);
+        }
     }
 
     count

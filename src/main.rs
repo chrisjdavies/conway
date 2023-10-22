@@ -1,8 +1,11 @@
 use gfx_demo;
 use rand::Rng;
 
-const GRID_WIDTH: usize = 100;
-const GRID_HEIGHT: usize = 100;
+const TITLE: &'static str = "Conway";
+const WINDOW_WIDTH: usize = 640;
+const WINDOW_HEIGHT: usize = 480;
+const GRID_WIDTH: usize = WINDOW_WIDTH / 4;
+const GRID_HEIGHT: usize = WINDOW_HEIGHT / 4;
 const GRID_SIZE: usize = GRID_WIDTH * GRID_HEIGHT;
 const COLOUR_ALIVE: u32 = 0xff00ff00;
 const COLOUR_DEAD: u32 = 0xff000000;
@@ -82,8 +85,8 @@ fn main() {
     let mut init = true;
 
     gfx_demo::gfx_demo(
-        "Conway",
-        640, 480,
+        TITLE,
+        WINDOW_WIDTH as u32, WINDOW_HEIGHT as u32,
         GRID_WIDTH as u32, GRID_HEIGHT as u32,
         50,
         |pixels| {
